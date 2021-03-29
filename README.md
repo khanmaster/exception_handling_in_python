@@ -31,3 +31,31 @@ finally:
 
 
 It is worth noting that the `+` operator can be used with 
+
+```python
+def open_using_with_and_print(file):
+    try:
+        with open(file, "r") as file:
+            for line in file.readlines():
+                print(line.rstrip('\n'))
+    except FileNotFoundError:
+        print("file cannot be found or directory is incorrect, please check the details provided")
+        raise
+    finally:
+        print("\nPlease chose the items from the list  and enjoy your HAPPY MEAL")
+open_using_with_and_print("orders.text")
+
+```
+- Let's add an item to our orders.text
+
+```python
+def write_to_file(file, order_item):
+    try:
+        with open(file, "w") as file:
+            file.write(order_item + '\n')
+    except FileNotFoundError:
+        print("file cannot be found or directory is incorrect, please check the details provided")
+        raise
+
+write_to_file("order.txt", "Ice Cream")
+```
